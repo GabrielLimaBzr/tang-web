@@ -1,17 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Credenciais } from 'src/app/models/credentials';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [MessageService]
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private messageService: MessageService) { }
 
   cred: Credenciais = {
     login: "",
@@ -20,6 +21,8 @@ export class LoginComponent {
 
   @Input() visible = false;
   @Output() okClicked = new EventEmitter<void>();
+
+  isLoading: boolean = false;
 
   onDialogShow(): void {
   }
@@ -32,24 +35,24 @@ export class LoginComponent {
     this.visible = false;
   }
 
-  username = new FormControl(null, Validators.maxLength(100));
-  password = new FormControl(null, Validators.minLength(3));
-
   login() {
+    this.isLoading = true
     this.authService.autenticar(this.cred).subscribe(
       (response) => {
-        console.log(response);
-        
         this.authService.successfulLogin(response.substring(7));
-        console.log('logou');
-
-        /* setTimeout(() => {
-          this.router.navigate(["/home"]);
-        }, 3000); */
+        setTimeout(() => {
+          this.visible = false
+          this.isLoading = false
+          this.messageService.add({ severity: 'success', summary: 'Logado', detail: 'Usuário logado com sucesso!' });
+        }, 1000);
       },
       () => {
-        console.log('n logou');
-
+        setTimeout(() =>{
+          this.isLoading = false
+          this.messageService.add({ severity: 'error', summary: 'Error ao fazer login', detail: 'Usuário e/ou senha inválidos!' });
+        }, 1000)
+        this.cred.login = ""
+        this.cred.passphrase = ""
       }
     );
 

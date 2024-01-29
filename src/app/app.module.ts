@@ -8,10 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
+
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DialogModule } from 'primeng/dialog';
+import { BlockUIModule } from 'primeng/blockui';
+import { ToastModule } from 'primeng/toast';
+
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -34,7 +38,9 @@ import { LoginComponent } from './components/auth/login/login.component';
     FormsModule,
     ButtonModule,
     SelectButtonModule,
-    DialogModule
+    DialogModule,
+    ToastModule,
+    BlockUIModule
   ],
   providers: [],
   bootstrap: [AppComponent]

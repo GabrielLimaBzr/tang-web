@@ -8,7 +8,7 @@ import { LoginComponent } from 'src/app/components/auth/login/login.component';
 })
 export class HeaderComponent {
 
-  loginModalVisible = true;
+  loginModalVisible = false;
 
   @ViewChild('loginModal') loginModal?: LoginComponent;
 
