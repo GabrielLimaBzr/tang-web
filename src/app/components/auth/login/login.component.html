@@ -6,15 +6,15 @@
         <div class="flex flex-column justify-content-center">
             <span class="p-input-icon-left my-3">
                 <i class="pi pi-user"></i>
-                <input type="text" pInputText [(ngModel)]="cred.username" placeholder="Username" />
+                <input type="text" pInputText [(ngModel)]="cred.login" placeholder="Username" />
             </span>
 
             <span class="p-input-icon-left my-3">
                 <i class="pi pi-key"></i>
-                <input type="text" pInputText [(ngModel)]="cred.password" placeholder="Password" />
+                <input type="text" pInputText [(ngModel)]="cred.passphrase" placeholder="Password" />
             </span>
 
-            <p-button [disabled]="!cred.password  || !cred.username" class="flex justify-content-end" label="Entrar" [outlined]="false" (onClick)="login()"></p-button>
+            <p-button [disabled]="!cred.passphrase  || !cred.login" class="flex justify-content-end" label="Entrar" [outlined]="false" (onClick)="login()"></p-button>
         </div>
         <ng-template pTemplate="footer">
           

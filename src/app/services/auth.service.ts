@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Credenciais } from '../models/credentials';
 import { environment } from 'src/environments/environment'
+import { Observable, map } from 'rxjs';
 
 
 
@@ -15,13 +16,17 @@ export class AuthService {
 
   jwtService: JwtHelperService = new JwtHelperService();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  autenticar(creds: Credenciais) {
-    return this.http.post(`${this.baseUrl}/login`, creds, {
-      observe: "response",
-      responseType: "text",
-    });
+  autenticar(creds: Credenciais): Observable<string> {
+    return this.http.post(`${this.baseUrl}/auth`, creds, {
+      responseType: 'text',
+    }).pipe(
+      map((token: string) => {
+        console.log('Token recebido:', token);
+        return token || '';
+      })
+    );
   }
 
   successfulLogin(authToken: string) {

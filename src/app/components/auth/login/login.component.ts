@@ -14,8 +14,8 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   cred: Credenciais = {
-    username: "",
-    password: "",
+    login: "",
+    passphrase: "",
   };
 
   @Input() visible = false;
@@ -38,9 +38,9 @@ export class LoginComponent {
   login() {
     this.authService.autenticar(this.cred).subscribe(
       (response) => {
-        this.authService.successfulLogin(
-          response.headers.get("Authorization").substring(7)
-        );
+        console.log(response);
+        
+        this.authService.successfulLogin(response.substring(7));
         console.log('logou');
 
         /* setTimeout(() => {
