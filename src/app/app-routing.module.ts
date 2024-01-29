@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 
 const routes: Routes = [
+  { path: '**', redirectTo: '/home' },
   {
-    path: "",
+    path: "home",
     component: AppLayoutComponent
   }
 ];

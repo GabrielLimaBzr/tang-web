@@ -13,7 +13,7 @@
 
             <span class="p-input-icon-left my-3">
                 <i class="pi pi-key"></i>
-                <input type="text" pInputText [(ngModel)]="cred.passphrase" placeholder="Password" />
+                <input  type="password" pInputText [(ngModel)]="cred.passphrase" placeholder="Password" />
             </span>
 
             <p-button [disabled]="!cred.passphrase  || !cred.login" class="flex justify-content-end" label="Entrar" [outlined]="false" (onClick)="login()"></p-button>

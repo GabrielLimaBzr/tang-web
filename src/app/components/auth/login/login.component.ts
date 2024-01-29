@@ -39,7 +39,7 @@ export class LoginComponent {
     this.isLoading = true
     this.authService.autenticar(this.cred).subscribe(
       (response) => {
-        this.authService.successfulLogin(response.substring(7));
+        this.authService.successfulLogin(response);
         setTimeout(() => {
           this.visible = false
           this.isLoading = false

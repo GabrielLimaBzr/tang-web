@@ -1,9 +1,9 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Credenciais } from '../models/credentials';
 import { environment } from 'src/environments/environment'
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 
 
 
@@ -13,8 +13,8 @@ import { Observable, map } from 'rxjs';
 export class AuthService {
 
   private baseUrl = environment.baseUrl + '/users'
-
   jwtService: JwtHelperService = new JwtHelperService();
+  private loginStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient) { }
 
@@ -29,19 +29,26 @@ export class AuthService {
     );
   }
 
-  successfulLogin(authToken: string) {
-    localStorage.setItem("token", authToken);
-  }
-
-  isAuteticado() {
-    let token = localStorage.getItem("token");
-    if (token != null) {
-      return !this.jwtService.isTokenExpired(token);
+  successfulLogin(authToken: string): void {
+    if (!this.jwtService.isTokenExpired(authToken)) {
+      localStorage.setItem('token', authToken);
+      this.loginStatus.emit(true); // Emitir evento de status de login
+    } else {
+      console.error('Token expirado.');
     }
-    return false;
   }
 
-  logout() {
-    localStorage.clear();
+  isAutenticado(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null && !this.jwtService.isTokenExpired(token);
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.loginStatus.emit(false);
+  }
+
+  getLoginStatus(): EventEmitter<boolean> {
+    return this.loginStatus;
   }
 }
