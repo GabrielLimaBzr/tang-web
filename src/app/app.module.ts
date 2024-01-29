@@ -8,13 +8,20 @@ import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { DialogModule } from 'primeng/dialog';
+
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { LoginComponent } from './components/auth/login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppLayoutComponent
+    AppLayoutComponent,
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +29,9 @@ import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
     BrowserAnimationsModule,
     InputTextModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    SelectButtonModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

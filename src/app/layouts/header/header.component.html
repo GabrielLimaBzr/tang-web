@@ -1,0 +1,14 @@
+<nav>
+    <div class="shadow-2 nav-content">
+        <div class="wrapper">
+            <div class="logo"><a href="#">Tang</a></div>
+
+            <div class="nav-links">
+                <p-button class="mx-3" label="Entrar" [outlined]="true" (onClick)="showLogin()"></p-button>
+                <p-button class="" label="Cadastre-se"></p-button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<app-login [visible]="loginModalVisible" (okClicked)="hideLoginModal()" #loginModal></app-login>

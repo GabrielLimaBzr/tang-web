@@ -1,0 +1,33 @@
+nav{
+    position: fixed;
+    z-index: 99;
+    width: 100%;   
+    background: var(--surface-card);
+
+    .nav-content{
+        border-bottom: solid 2px var(--primary-color);
+    }
+
+    .wrapper{
+        position: relative;
+        max-width: 1300px;
+        padding: 0px 30px;
+        height: 70px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+
+        .logo a{
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    
+        .nav-links{
+            display: flex;
+        }
+    }
+}
