@@ -8,11 +8,13 @@ import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppLayoutComponent
   ],
   imports: [
     BrowserModule,
