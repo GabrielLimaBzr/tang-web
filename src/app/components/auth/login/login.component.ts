@@ -24,12 +24,6 @@ export class LoginComponent {
 
   isLoading: boolean = false;
 
-  onDialogShow(): void {
-  }
-
-  onDialogHide(): void {
-  }
-
   onOkClick(): void {
     this.okClicked.emit();
     this.visible = false;

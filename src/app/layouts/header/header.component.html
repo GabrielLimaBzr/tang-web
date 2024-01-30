@@ -3,11 +3,11 @@
     <p-blockUI [blocked]="isLoading"> <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i></p-blockUI>
     <div class="shadow-2 nav-content">
         <div class="wrapper">
-            <div class="logo"><a href="#">Tang</a></div>
+            <div class="logo"><a href="#"><span class="logodetails">blog</span>TANG</a></div>
 
             <div class="nav-links" [ngClass]="{'logged-in': isLoggedIn}">
                 <p-button *ngIf="!isLoggedIn" class="mx-3" label="Entrar" [outlined]="true" (onClick)="showLogin()"></p-button>
-                <p-button *ngIf="!isLoggedIn" class="" label="Cadastre-se"></p-button>
+                <p-button *ngIf="!isLoggedIn" class="" label="Cadastre-se" (onClick)="showRegister()"></p-button>
 
                 <p-button pTooltip="Criar novo post" 
                     tooltipPosition="bottom" 
@@ -27,3 +27,5 @@
 </nav>
 
 <app-login [visible]="loginModalVisible" (okClicked)="hideLoginModal()" #loginModal></app-login>
+
+<app-register [visible]="registerModalVisible" (okClicked)="hideRegisterModal()" #registerModal></app-register>

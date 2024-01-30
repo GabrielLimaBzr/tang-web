@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { AppService } from 'src/app/app.service';
 import { LoginComponent } from 'src/app/components/auth/login/login.component';
+import { RegisterComponent } from 'src/app/components/auth/register/register.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,10 +15,12 @@ export class HeaderComponent implements OnInit {
   isLoading: boolean = false;
 
   @ViewChild('loginModal') loginModal?: LoginComponent;
+  @ViewChild('registerModal') registerModal?: RegisterComponent;
 
   items: MenuItem[] | undefined;
 
   loginModalVisible = false;
+  registerModalVisible= false;
 
   isLoggedIn: boolean = false;
 
@@ -41,6 +44,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  showRegister(): void{
+    this.registerModalVisible = true;
+    if (this.registerModal) {
+      this.registerModal.visible = true;
+    }
+  }
+
   hideLoginModal(): void {
     this.loginModalVisible = false;
     if (this.loginModal) {
@@ -48,11 +58,18 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  hideRegisterModal(): void {
+    this.registerModalVisible = false;
+    if (this.registerModal) {
+      this.registerModal.visible = false;
+    }
+  }
+
   logout() {
     this.isLoading = true
     setTimeout(() => {
       this.authService.logout();
-      this.messageService.add({ severity: 'success', summary: 'Usuário Desconectado', detail: 'Vou sentir sua falta 😭' });
+      this.messageService.add({ severity: 'success', summary: 'Usuário Desconectado', detail: 'Vamos sentir sua falta 😭' });
       this.isLoading = false
     }, 1000);
   }

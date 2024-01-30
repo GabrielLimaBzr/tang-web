@@ -20,6 +20,7 @@ import { MenuModule } from 'primeng/menu';
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { LoginComponent } from './components/auth/login/login.component';
     AppComponent,
     AppLayoutComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,

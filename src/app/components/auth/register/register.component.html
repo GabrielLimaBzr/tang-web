@@ -1,0 +1,46 @@
+<div class="card flex justify-content-center">
+    <p-toast></p-toast>
+    <p-blockUI [blocked]="isLoading"> <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i></p-blockUI>
+    <p-dialog header="Header" [(visible)]="visible" [draggable]="false" [modal]="true" [dismissableMask]="true">
+        <ng-template pTemplate="header">
+            <span class="text-xl font-bold">Nem é tanta coisa...😅</span>
+        </ng-template>
+        <div class="flex flex-column justify-content-center mx-3 my-2">
+
+            <span class="p-input-icon-right my-3 p-float-label">
+                <i class="pi pi-credit-card"></i>
+                <input type="text" pInputText [(ngModel)]="create.name" placeholder="Name" />
+                <label htmlFor="Name">Name</label>
+            </span>
+
+            <span class="p-input-icon-right my-3 p-float-label">
+                <i class="pi pi-envelope"></i>
+                <input type="email" pInputText [(ngModel)]="create.email" placeholder="Email" />
+                <label htmlFor="Email">Email</label>
+            </span>
+
+            <span class="p-input-icon-right my-3 p-float-label">
+                <i class="pi pi-user"></i>
+                <input type="text" pInputText [(ngModel)]="create.login" placeholder="Username" />
+                <label htmlFor="Username">Username</label>
+            </span>
+
+            <span class="p-input-icon-right my-3 p-float-label">
+                <i class="pi pi-key"></i>
+                <input  type="password" pInputText [(ngModel)]="create.passphrase" placeholder="Password" />
+                <label htmlFor="Senha">Senha</label>
+            </span>
+
+            <span class="p-input-icon-right my-3 p-float-label">
+                <i class="pi pi-key"></i>
+                <input  type="password" pInputText [(ngModel)]="password" placeholder="Repeat Password" />
+                <label htmlFor="Confirme a senha">Confirme a senha</label>
+            </span>
+
+            <p-button [disabled]="!create.passphrase  || !create.login" class="flex justify-content-end mt-2" label="Cadastrar" [outlined]="false" (onClick)="register()"></p-button>
+        </div>
+        <ng-template pTemplate="footer">
+          
+        </ng-template>
+    </p-dialog>
+</div>

@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Credenciais } from '../models/credentials';
 import { environment } from 'src/environments/environment'
 import { Observable, catchError, map, throwError } from 'rxjs';
+import { RegisterUser } from '../models/registerUser';
 
 
 
@@ -12,6 +13,7 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 })
 export class AuthService {
 
+
   private baseUrl = environment.baseUrl + '/users'
   jwtService: JwtHelperService = new JwtHelperService();
   private loginStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -19,11 +21,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   autenticar(creds: Credenciais): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth`, creds, {
+    const url = `${this.baseUrl}/auth`;
+    return this.http.post(url, creds, {
       responseType: 'text',
     }).pipe(
-      map((token: string) => {
-        console.log('Token recebido:', token);
+      map((token: string) => {;
         return token || '';
       })
     );
@@ -50,5 +52,10 @@ export class AuthService {
 
   getLoginStatus(): EventEmitter<boolean> {
     return this.loginStatus;
+  }
+
+  register(create: RegisterUser): Observable<RegisterUser> {
+    const url = `${this.baseUrl}/create`;
+    return this.http.post<RegisterUser>(url, create);
   }
 }
