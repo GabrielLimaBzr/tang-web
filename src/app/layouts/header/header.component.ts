@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
+import { AppService } from 'src/app/app.service';
 import { LoginComponent } from 'src/app/components/auth/login/login.component';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService, private messageService: MessageService) { }
+  constructor(private authService: AuthService, private messageService: MessageService, private appService: AppService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isAutenticado();
@@ -51,9 +52,18 @@ export class HeaderComponent implements OnInit {
     this.isLoading = true
     setTimeout(() => {
       this.authService.logout();
-      this.messageService.add({ severity: 'success', summary: 'Usuário Desconectado', detail: 'Vou sentir sua falta ;(' });
+      this.messageService.add({ severity: 'success', summary: 'Usuário Desconectado', detail: 'Vou sentir sua falta 😭' });
       this.isLoading = false
     }, 1000);
+  }
+
+  darkMode(id: string){
+    this.appService.switchTheme(id);
+
+  }
+
+  lightMode(id: string){
+    this.appService.switchTheme(id);
   }
 
 
@@ -63,19 +73,15 @@ export class HeaderComponent implements OnInit {
         label: 'Temas',
         items: [
           {
-            label: 'Update',
-            icon: 'pi pi-refresh',
+            label: 'Do Batman',
             command: () => {
-              console.log('saiu');
-              // Lógica para 'Update'
+              this.darkMode('arya-orange')
             }
           },
           {
-            label: 'Delete',
-            icon: 'pi pi-times',
+            label: 'Puro Roxo',
             command: () => {
-              console.log('cor');
-              // Lógica para 'Delete'
+              this.lightMode('lara-light-purple')
             }
           }
         ]
