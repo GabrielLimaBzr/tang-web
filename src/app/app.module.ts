@@ -27,6 +27,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { MainComponent } from './layouts/main/main.component';
 import { CardComponent } from './components/card/card.component';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
+import { CreatePostComponent } from './components/post/create-post/create-post.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
     FooterComponent,
     MainComponent,
     CardComponent,
+    CreatePostComponent,
     
   ],
   imports: [

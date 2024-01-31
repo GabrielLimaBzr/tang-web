@@ -3,6 +3,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { AppService } from 'src/app/app.service';
 import { LoginComponent } from 'src/app/components/auth/login/login.component';
 import { RegisterComponent } from 'src/app/components/auth/register/register.component';
+import { CreatePostComponent } from 'src/app/components/post/create-post/create-post.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -16,11 +17,13 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('loginModal') loginModal?: LoginComponent;
   @ViewChild('registerModal') registerModal?: RegisterComponent;
+  @ViewChild('createPostModal') createPostModal?: CreatePostComponent;
 
   items: MenuItem[] | undefined;
 
   loginModalVisible = false;
-  registerModalVisible= false;
+  registerModalVisible = false;
+  createPostModalVisible = false
 
   isLoggedIn: boolean = false;
 
@@ -36,6 +39,15 @@ export class HeaderComponent implements OnInit {
     this.configurarItensMenu();
   }
 
+  showCreatePost(): void {
+    console.log('tets');
+    
+    this.createPostModalVisible = true
+    if (this.createPostModal) {
+      this.createPostModal.visible = true;
+    }
+  }
+
 
   showLogin(): void {
     this.loginModalVisible = true;
@@ -44,7 +56,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  showRegister(): void{
+  showRegister(): void {
     this.registerModalVisible = true;
     if (this.registerModal) {
       this.registerModal.visible = true;
@@ -65,6 +77,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  hideCreatePostModal(): void {
+    this.createPostModalVisible = false;
+    if (this.createPostModal) {
+      this.createPostModal.visible = false;
+    }
+  }
+
   logout() {
     this.isLoading = true
     setTimeout(() => {
@@ -74,12 +93,12 @@ export class HeaderComponent implements OnInit {
     }, 1000);
   }
 
-  darkMode(id: string){
+  darkMode(id: string) {
     this.appService.switchTheme(id);
 
   }
 
-  lightMode(id: string){
+  lightMode(id: string) {
     this.appService.switchTheme(id);
   }
 

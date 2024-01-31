@@ -15,7 +15,7 @@
                     *ngIf="isLoggedIn" 
                     class="mx-3" 
                     icon="pi pi-plus" 
-                    (onClick)="showLogin()">
+                    (onClick)="showCreatePost()">
                 </p-button>
 
                 <p-button icon="pi pi-book" *ngIf="isLoggedIn" class="mx-3" label="Criar Álbum" [outlined]="true" (onClick)="showLogin()"></p-button>
@@ -34,3 +34,5 @@
 <app-login [visible]="loginModalVisible" (okClicked)="hideLoginModal()" #loginModal></app-login>
 
 <app-register [visible]="registerModalVisible" (okClicked)="hideRegisterModal()" #registerModal></app-register>
+
+<app-create-post [visible]="createPostModalVisible" (okClicked)="hideCreatePostModal()" #createPostModal></app-create-post>

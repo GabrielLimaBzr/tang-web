@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PostResume } from '../models/post';
+import { Post, PostResume } from '../models/post';
 import { EventService } from './event.service';
 
 @Injectable({
@@ -20,5 +20,9 @@ export class PostService {
 
   deletePost(id: number): Observable<PostResume> {
     return this.http.delete<PostResume>(`${this.baseUrl}/${id}`);
+  }
+
+  createPost(post: FormData) {
+    return this.http.post<Post>(`${this.baseUrl}/save`, post);
   }
 }
