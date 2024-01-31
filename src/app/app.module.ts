@@ -21,6 +21,7 @@ import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { RegisterComponent } from './components/auth/register/register.component
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
+    FooterComponent,
     
   ],
   imports: [
