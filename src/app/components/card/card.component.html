@@ -1,0 +1,13 @@
+<div>
+    <p-toast></p-toast>
+    <p-blockUI [blocked]="isLoading"> <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i></p-blockUI>
+    <p-card  [header]="post.title" class="m-3" [subheader]="'Criado em: ' + createdFormatted">
+        <p class="m-0">
+            {{ post.content }}
+        </p>
+        <ng-template pTemplate="footer">
+            <p-button  size="small" label="Visualizar" icon="pi pi-search"></p-button>
+            <p-button (onClick)="deletePost(post.id)" size="small"label="Excluir" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
+        </ng-template>
+    </p-card>
+</div>

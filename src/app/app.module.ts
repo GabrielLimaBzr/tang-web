@@ -16,12 +16,17 @@ import { BlockUIModule } from 'primeng/blockui';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { MenuModule } from 'primeng/menu';
+import { PanelModule } from 'primeng/panel';
+import { CardModule } from 'primeng/card';
 
 import { AppLayoutComponent } from './layouts/app-layout/app-layout.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { MainComponent } from './layouts/main/main.component';
+import { CardComponent } from './components/card/card.component';
+import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -32,6 +37,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
+    MainComponent,
+    CardComponent,
     
   ],
   imports: [
@@ -47,9 +54,11 @@ import { FooterComponent } from './layouts/footer/footer.component';
     ToastModule,
     BlockUIModule,
     TooltipModule,
-    MenuModule
+    MenuModule,
+    PanelModule,
+    CardModule
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

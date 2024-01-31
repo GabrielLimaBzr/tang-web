@@ -1,0 +1,15 @@
+<div class="main">
+    <div class="card" style="min-height: 90vh;">
+        <p-panel>
+            <ng-template pTemplate="header"> <span
+                    class="text-primary font-semibold text-xl">Timeline</span>
+            </ng-template>
+
+            <div *ngFor="let post of postsResume">
+                <app-card style="width: 100%;" [post]="post"></app-card>
+            </div>
+               
+            
+        </p-panel>
+    </div>
+</div>

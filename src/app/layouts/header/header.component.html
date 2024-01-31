@@ -6,6 +6,7 @@
             <div class="logo"><a href="#"><span class="logodetails">blog</span>TANG</a></div>
 
             <div class="nav-links" [ngClass]="{'logged-in': isLoggedIn}">
+                
                 <p-button *ngIf="!isLoggedIn" class="mx-3" label="Entrar" [outlined]="true" (onClick)="showLogin()"></p-button>
                 <p-button *ngIf="!isLoggedIn" class="" label="Cadastre-se" (onClick)="showRegister()"></p-button>
 
@@ -19,8 +20,12 @@
 
                 <p-button icon="pi pi-book" *ngIf="isLoggedIn" class="mx-3" label="Criar Álbum" [outlined]="true" (onClick)="showLogin()"></p-button>
 
-                <p-menu #menu [model]="items" [popup]="true"></p-menu>
-                <button pButton type="button" (click)="menu.toggle($event)" icon="pi pi-bars" class="ml-3"></button>
+
+                <div class="card flex justify-content-center" id="menu">
+                    <p-menu #menu [model]="items" [popup]="true"></p-menu>
+                    <button pButton type="button" (click)="menu.toggle($event)" icon="pi pi-bars" class="ml-3"></button>
+                </div>
+               
             </div>
         </div>
     </div>
